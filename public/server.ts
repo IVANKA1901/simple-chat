@@ -1,4 +1,3 @@
-import { Request, Response } from "express";
 import express from "express";
 import http from "http";
 import { Server, Socket } from "socket.io";
@@ -9,9 +8,9 @@ dotenv.config();
 const { PORT } = process.env;
 
 const app = express();
-const server = http.createServer(app);
+const httpServer = http.createServer(app);
 
-server.listen(PORT || 3003, () => {
+httpServer.listen(PORT || 3003, () => {
   console.log(`Server running on port 3003`);
 });
 
@@ -19,7 +18,7 @@ app.use(express.static(path.join(__dirname + "/public")));
 
 const users: { [key: string]: string } = {};
 
-const io = new Server(server);
+const io = new Server(httpServer);
 
 io.on("connection", (client: Socket) => {
   const broadcast = (event: string, data: object) => {
