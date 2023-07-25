@@ -18,7 +18,7 @@ const users: { [key: string]: string } = {};
 const io = new Server(server);
 
 io.on("connection", (client: Socket) => {
-  const broadcast = (event: string, data: any) => {
+  const broadcast = (event: string, data: object) => {
     client.emit(event, data);
     client.broadcast.emit(event, data);
   };
@@ -31,5 +31,10 @@ io.on("connection", (client: Socket) => {
       broadcast("user", users);
     }
     broadcast("message", message);
+  });
+
+  client.on("disconnect", () => {
+    delete users[client.id];
+    client.broadcast.emit("user", users);
   });
 });
