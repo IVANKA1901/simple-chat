@@ -1,6 +1,10 @@
+import { Request, Response } from "express";
 import express from "express";
 import http from "http";
 import { Server, Socket } from "socket.io";
+import path from "path";
+import dotenv from "dotenv";
+dotenv.config();
 
 const { PORT } = process.env;
 
@@ -8,10 +12,10 @@ const app = express();
 const server = http.createServer(app);
 
 server.listen(PORT || 3003, () => {
-  console.log("Server running on port 3003");
+  console.log(`Server running on port 3003`);
 });
 
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(path.join(__dirname + "/public")));
 
 const users: { [key: string]: string } = {};
 
