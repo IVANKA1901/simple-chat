@@ -7,8 +7,8 @@ const { PORT } = process.env;
 const app = express();
 const server = http.createServer(app);
 
-server.listen(PORT || 3001, () => {
-  console.log("Server running on port 3001");
+server.listen(PORT || 3003, () => {
+  console.log("Server running on port 3003");
 });
 
 app.use(express.static(__dirname + "/public"));
