@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "node ./dist/server",
+    "start": "node ./dist/app.js",
     "start:dev": "nodemon ./dist/server",
     "dev": "nodemon ./public/server.ts --watch ./src --onChange \" rimraf dist\" ",
     "build": "tsc",

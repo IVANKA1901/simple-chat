@@ -7,7 +7,7 @@ const userMessage = document.getElementById("msg_txt") as HTMLInputElement;
 const userName = document.getElementById("msg_name") as HTMLInputElement;
 const sendButton = document.getElementById("msg_btn")!;
 
-const socket: Socket = io();
+const socket: Socket = io("http://localhost:3003");
 const messages: HTMLElement[] = [];
 const LIMIT_MESSAGES: number = 10;
 
